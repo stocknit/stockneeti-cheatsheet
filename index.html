@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Stockneeti: Cheat Sheet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #F5F5F5; /* Light Grey */
+        }
+
+        .navbar-main {
+            background-color: #5f6bc2; /* Dark Blue */
+            margin-bottom: 20px;
+            border-radius: 0;
+        }
+
+        .navbar-main .navbar-brand {
+            color: #FFF;
+        }
+
+        .navbar-main .navbar-brand:hover,
+        .navbar-main .navbar-brand:focus {
+            color: #FFF;
+        }
+
+        .navbar-main .form-control {
+            border-radius: 6px;
+        }
+
+        .horizontal-bar {
+            margin-top: 90px;
+            background-color: #E0E0E0; /* Light Grey */
+            border-radius: 6px;
+        }
+
+        .horizontal-bar .nav-link {
+            color: #424242; /* Dark Grey */
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .horizontal-bar .nav-link.active {
+            background-color: #5f6bc2; /* Medium Grey */
+            color: #FFF;
+            border-radius: 6px;
+        }
+
+        .card {
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .description-card {
+            background-color: #b0b6d5;
+        }
+
+        .scrollable-list-group {
+            height: 450px;
+            overflow-y: auto;
+        }
+
+        .list-group-item {
+            cursor: pointer;
+        }
+
+        .list-group-item:hover {
+            background-color: #F5F5F5; /* Light Grey */
+        }
+
+        .list-group-item.active {
+            background-color: #b0b6d5; /* Medium Grey */
+            color: #FFF;
+        }
+
+        .tag-group {
+            margin: 2px;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24">
+                    <!-- Owl Body -->
+                    <path d="M256 0C114.84 0 0 114.84 0 256s114.84 256 256 256 256-114.84 256-256S397.16 0 256 0zm141.31 365.97c-22.67 27.75-52.16 46.61-85.31 55.37V437.5c0 8.28-6.72 15-15 15h-30c-8.28 0-15-6.72-15-15v-16.16c-33.15-8.75-62.64-27.61-85.31-55.37-18.78-22.99-29.01-52.15-29.01-82.84v-37.5c0-70.69 57.5-128.19 128.19-128.19S384 118.5 384 189.19v37.5c0 30.69-10.23 59.85-29.01 82.84zm-141.31-30.97c44.18 0 80-35.82 80-80v-30h-160v30c0 44.18 35.82 80 80 80zm-112-80v-30h-15c-8.28 0-15-6.72-15-15v-30c0-8.28 6.72-15 15-15h15v-30.51c0-35.41 28.79-64.2 64.2-64.2s64.2 28.79 64.2 64.2V160h15c8.28 0 15 6.72 15 15v30c0 8.28-6.72 15-15 15h-15v30c0 44.18-35.82 80-80 80s-80-35.82-80-80zm160 30h-160v-30c0-17.67 14.33-32 32-32h96c17.67 0 32 14.33 32 32v30z" fill="#ffffff" />
+
+                    <!-- Owl Education Hat -->
+                    <path d="M256 0L96 256h320L256 0zm0 480l48-96h-96l48 96z" fill="#007bff" />
+
+                    <!-- Owl Stock Market Lines -->
+                    <path d="M166.72 203.31l-34.72-34.72c-7.81-7.81-7.81-20.47 0-28.28l6.23-6.23c7.81-7.81 20.47-7.81 28.28 0l28.49 28.49 63.24-63.24c7.81-7.81 20.47-7.81 28.28 0l6.23 6.23c7.81 7.81 7.81 20.47 0 28.28l-97.75 97.75c-7.81 7.8-20.47 7.8-28.28 0z" fill="#007bff" />
+                    <path d="M345.29 308.69l34.72 34.72c7.81 7.81 7.81 20.47 0 28.28l-6.23 6.23c-7.81 7.81-20.47 7.81-28.28 0l-28.49-28.49-63.24 63.24c-7.81 7.81-20.47 7.81-28.28 0l-6.23-6.23c-7.81-7.81-7.81-20.47 0-28.28l97.75-97.75c7.81-7.8 20.47-7.8 28.28 0z" fill="#007bff" />
+                </svg>
+
+                Stockneeti: Cheat Sheet</a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sub Navbar -->
+    <div class="container" style="margin-top: 40px;">
+        <div class="horizontal-bar">
+            <div class="container">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ 'active': selectedOption === 'technical' }"
+                           @click="selectOption('technical')">Technical Indicators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ 'active': selectedOption === 'candlestick' }"
+                           @click="selectOption('candlestick')">Candlestick Pattern</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ 'active': selectedOption === 'fundamental' }"
+                           @click="selectOption('fundamental')">Fundamental Ratios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ 'active': selectedOption === 'attributes' }"
+                           @click="selectOption('attributes')">Attributes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container" style="margin-top: 40px;">
+        <div class="card rounded">
+            <div class="card-body">
+                <h5 class="card-title">{{ selectedOption }}</h5>
+                <div class="row">
+                    <!-- List -->
+                    <div class="col-md-4">
+                        <ul class="list-group scrollable-list-group">
+                            <li
+                                    v-for="(item, key) in listItems"
+                                    :key="key"
+                                    class="list-group-item"
+                                    :class="{ active: selectedItem === key }"
+                                    @click="selectListItem(key)"
+                                    style="cursor: pointer"
+                            >
+                                {{ key }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Information -->
+                    <div class="col-md-8">
+                        <div v-if="selectedItem">
+                            <div class="card description-card">
+                                <div class="card-body">
+                                    <!-- Additional fields for specific options -->
+                                    <div v-if="selectedOption === 'technical'">
+                                        <p class="card-text">
+                                            <strong>{{ listItems[selectedItem].description }}</strong>
+                                        </p>
+                                        <hr class="hr"/>
+                                        <p class="card-text">
+                                            <strong>Usage:</strong>
+                                            {{ listItems[selectedItem].usage }}
+                                        </p>
+
+                                        <p class="card-text">
+                                            <strong>Parameters</strong>
+                                        </p>
+
+                                        <ol class="list-group list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start"
+                                                v-for="(parameter, paramName) in listItems[selectedItem].parameters">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">{{ paramName }}</div>
+                                                    {{ parameter.description }} ( {{parameter.type}})
+                                                </div>
+                                            </li>
+                                        </ol>
+                                        <hr>
+                                        <p class="card-text">
+                                            <strong>Input Attributes</strong>
+                                        <div>
+                                                <span v-for="inputAttribute in listItems[selectedItem].input_attributes"
+                                                      class="tag-group">
+                                                <button
+                                                        type="button" class="btn btn-primary"
+                                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #E0E0E0;color: #424242">
+                                                {{ inputAttribute }}
+                                                </button>
+                                                    </span>
+                                        </div>
+                                        </p>
+                                    </div>
+                                    <div v-else-if="selectedOption === 'fundamental'">
+                                        <p class="card-text">
+                                            <strong>{{ listItems[selectedItem].name }}</strong>
+                                        </p>
+                                        <hr class="hr"/>
+                                        <p class="card-text">
+                                            <strong>Interpretation:</strong> {{ listItems[selectedItem].interpretation
+                                            }}
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Depends On:</strong>
+                                        </p>
+
+                                        <ol class="list-group list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start"
+                                                v-for="dependency in listItems[selectedItem].depends_on">
+                                                <div class="ms-2 me-auto">
+                                                    {{ dependency }}
+                                                </div>
+                                            </li>
+                                        </ol>
+                                        <hr/>
+                                        <p class="card-text">
+                                            <strong>Formula:</strong> {{ listItems[selectedItem].formula }}
+                                        </p>
+                                    </div>
+                                    <div v-else-if="selectedOption === 'candlestick'">
+                                        <p class="card-text">
+                                            <strong>{{ listItems[selectedItem].name }}</strong>
+                                        </p>
+                                        <hr/>
+                                        <p class="card-text">
+                                            {{ listItems[selectedItem].interpretation}}
+                                        </p>
+                                        <hr/>
+                                        <button type="button" class="btn btn-light position-relative">
+                                            Candles Involved
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                                {{ listItems[selectedItem].candles_involved }}
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div v-else-if="selectedOption === 'attributes'">
+                                        <p class="card-text">
+                                            <strong>{{ listItems[selectedItem].description }}</strong>
+                                        </p>
+                                        <hr/>
+                                        <span class="tag-group">
+                                            <span class="tag-group">
+                                                <button
+                                                        type="button" class="btn btn-primary"
+                                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #E0E0E0;color: #424242">
+                                                          Updated: {{ listItems[selectedItem].update_frequency }}
+                                                </button>
+                                                </span>
+                                            <span class="tag-group">
+                                                <button
+                                                        type="button" class="btn btn-primary"
+                                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; background-color: #E0E0E0;color: #424242">
+                                                          Value Type: {{ listItems[selectedItem].type }}
+                                                </button>
+                                                </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <p>Please select an item from the list.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                selectedOption: 'technical',
+                listItems: [],
+                selectedItem: null,
+                jsonDataMap: {
+                    "technical": {
+                        "SMA": {
+                            "description": "Simple Moving Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the SMA"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Simple Moving Average (SMA) calculates the average price over a specified number of periods. It is commonly used to identify trends and potential support/resistance levels."
+                        },
+                        "EMA": {
+                            "description": "Exponential Moving Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the EMA"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Exponential Moving Average (EMA) gives more weight to recent prices, making it more responsive to price changes compared to the SMA. It is useful for identifying short-term trends and potential reversal points."
+                        },
+                        "WMA": {
+                            "description": "Weighted Moving Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the WMA"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Weighted Moving Average (WMA) assigns different weights to prices within the selected period, giving more weight to recent prices. It can be used to identify trends and potential support/resistance levels."
+                        },
+                        "DEMA": {
+                            "description": "Double Exponential Moving Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the DEMA"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Double Exponential Moving Average (DEMA) provides a smoother moving average by applying a double smoothing technique. It helps to filter out noise and identify trends more effectively."
+                        },
+                        "TEMA": {
+                            "description": "Triple Exponential Moving Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the TEMA"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Triple Exponential Moving Average (TEMA) is an advanced smoothing technique that provides a smoother average by applying triple smoothing. It is useful for trend identification and potential reversal points."
+                        },
+                        "KAMA": {
+                            "description": "Kaufman Adaptive Moving Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the KAMA"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Kaufman Adaptive Moving Average (KAMA) adjusts the smoothing factor based on market volatility. It dynamically changes its responsiveness to price changes, making it suitable for varying market conditions."
+                        },
+                        "MOM": {
+                            "description": "Momentum",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the MOM"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "Momentum calculates the rate of change in prices over a given period. It is used to identify the speed and strength of price movements and potential overbought or oversold conditions."
+                        },
+                        "RSI": {
+                            "description": "Relative Strength Index",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the RSI"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Relative Strength Index (RSI) measures the magnitude of recent price changes to determine overbought or oversold conditions. It oscillates between 0 and 100 and is used to identify potential trend reversals."
+                        },
+                        "WILLR": {
+                            "description": "Williams' %R",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the %R"
+                                }
+                            },
+                            "input_attributes": ["high", "low", "close"],
+                            "usage": "Williams' %R is a momentum oscillator that measures the level of the latest closing price relative to the high-low range over a specific period. It helps identify overbought or oversold conditions."
+                        },
+                        "MACD": {
+                            "description": "Moving Average Convergence Divergence",
+                            "parameters": {
+                                "fastperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods for the fast EMA"
+                                },
+                                "slowperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods for the slow EMA"
+                                },
+                                "signalperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods for the signal line"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Moving Average Convergence Divergence (MACD) is a trend-following momentum indicator. It calculates the difference between two moving averages and a signal line. It is used to identify trend direction and potential buy/sell signals."
+                        },
+                        "STOCH": {
+                            "description": "Stochastic Oscillator",
+                            "parameters": {
+                                "fastk_period": {
+                                    "type": "int",
+                                    "description": "Number of periods for the fast %K"
+                                },
+                                "slowk_period": {
+                                    "type": "int",
+                                    "description": "Number of periods for the slow %K"
+                                },
+                                "slowd_period": {
+                                    "type": "int",
+                                    "description": "Number of periods for the slow %D"
+                                }
+                            },
+                            "input_attributes": ["high", "low", "close"],
+                            "usage": "The Stochastic Oscillator measures the relationship between a stock's closing price and its price range over a specific period. It helps identify overbought or oversold conditions and potential trend reversals."
+                        },
+                        "ATR": {
+                            "description": "Average True Range",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the ATR"
+                                }
+                            },
+                            "input_attributes": ["high", "low", "close"],
+                            "usage": "The Average True Range (ATR) measures volatility by calculating the average range between a stock's high and low prices over a specific period. It is used to determine stop-loss levels and position sizing."
+                        },
+                        "ADX": {
+                            "description": "Average Directional Movement Index",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the ADX"
+                                }
+                            },
+                            "input_attributes": ["high", "low", "close"],
+                            "usage": "The Average Directional Movement Index (ADX) measures the strength of a trend. It determines whether the market is trending or in a trading range, and the strength of the trend."
+                        },
+                        "CCI": {
+                            "description": "Commodity Channel Index",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the CCI"
+                                }
+                            },
+                            "input_attributes": ["high", "low", "close"],
+                            "usage": "The Commodity Channel Index (CCI) measures the deviation of a stock's price from its statistical mean. It is used to identify overbought or oversold conditions and potential trend reversals."
+                        },
+                        "BBANDS": {
+                            "description": "Bollinger Bands",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the Bollinger Bands"
+                                },
+                                "nbdevup": {
+                                    "type": "float",
+                                    "description": "Number of standard deviations for the upper band"
+                                },
+                                "nbdevdn": {
+                                    "type": "float",
+                                    "description": "Number of standard deviations for the lower band"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "Bollinger Bands consist of a middle band (SMA) and two outer bands that are standard deviations away from the middle band. They help identify volatility, overbought or oversold conditions, and potential trend reversals."
+                        },
+                        "ROC": {
+                            "description": "Rate of Change",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the ROC"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Rate of Change (ROC) measures the percentage change in a stock's price over a specific period. It helps identify the momentum and speed of price movements."
+                        },
+                        "OBV": {
+                            "description": "On Balance Volume",
+                            "parameters": {},
+                            "input_attributes": ["close", "volume"],
+                            "usage": "On Balance Volume (OBV) measures the flow of volume in and out of a stock. It helps identify the strength of a trend and potential price reversals."
+                        },
+                        "TRIX": {
+                            "description": "Triple Exponential Average",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the TRIX"
+                                }
+                            },
+                            "input_attributes": ["close"],
+                            "usage": "The Triple Exponential Average (TRIX) is a momentum oscillator that smoothes price data and measures the rate of change in the smoothed data. It is used to identify trends and potential reversals."
+                        },
+                        "MFI": {
+                            "description": "Money Flow Index",
+                            "parameters": {
+                                "timeperiod": {
+                                    "type": "int",
+                                    "description": "Number of periods to calculate the MFI"
+                                }
+                            },
+                            "input_attributes": ["high", "low", "close", "volume"],
+                            "usage": "The Money Flow Index (MFI) measures the inflow and outflow of money into a stock over a specific period. It helps identify overbought or oversold conditions and potential trend reversals."
+                        }
+                    },
+                    "candlestick": {
+                        "doji": {
+                            "name": "Doji",
+                            "description": "Indicates indecision between buyers and sellers",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLDOJI",
+                            "interpretation": "A doji can signal a potential trend reversal or a continuation of the current trend, depending on its location and context.",
+                            "candles_involved": 1,
+                            "type": "int"
+                        },
+                        "hammer": {
+                            "name": "Hammer",
+                            "description": "Suggests a potential bullish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLHAMMER",
+                            "interpretation": "A hammer candlestick pattern can indicate that buyers are stepping in, potentially reversing the downtrend.",
+                            "candles_involved": 1,
+                            "type": "int"
+                        },
+                        "engulfing": {
+                            "name": "Engulfing",
+                            "description": "Indicates a potential trend reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLENGULFING",
+                            "interpretation": "An engulfing pattern occurs when a smaller candlestick is completely engulfed by the following larger candlestick. It can signal a shift in market sentiment.",
+                            "candles_involved": 2,
+                            "type": "int"
+                        },
+                        "harami": {
+                            "name": "Harami",
+                            "description": "Suggests a potential trend reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLHARAMI",
+                            "interpretation": "A harami pattern consists of a small candlestick within the previous larger candlestick. It indicates a potential reversal of the current trend.",
+                            "candles_involved": 2,
+                            "type": "int"
+                        },
+                        "shooting_star": {
+                            "name": "Shooting Star",
+                            "description": "Suggests a potential bearish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLSHOOTINGSTAR",
+                            "interpretation": "A shooting star candlestick pattern typically appears in an uptrend and can signal a potential trend reversal or a pause in the current trend.",
+                            "candles_involved": 1,
+                            "type": "int"
+                        },
+                        "morning_star": {
+                            "name": "Morning Star",
+                            "description": "Suggests a potential bullish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLMORNINGSTAR",
+                            "interpretation": "The morning star pattern consists of three candlesticks and indicates a potential trend reversal from bearish to bullish.",
+                            "candles_involved": 3,
+                            "type": "int"
+                        },
+                        "evening_star": {
+                            "name": "Evening Star",
+                            "description": "Suggests a potential bearish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLEVENINGSTAR",
+                            "interpretation": "The evening star pattern consists of three candlesticks and suggests a potential trend reversal from bullish to bearish.",
+                            "candles_involved": 3,
+                            "type": "int"
+                        },
+                        "bullish_engulfing": {
+                            "name": "Bullish Engulfing",
+                            "description": "Suggests a potential bullish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLBULLENGULFING",
+                            "interpretation": "The bullish engulfing pattern occurs when a small bearish candlestick is followed by a larger bullish candlestick, signaling a potential reversal to an uptrend.",
+                            "candles_involved": 2,
+                            "type": "int"
+                        },
+                        "bearish_engulfing": {
+                            "name": "Bearish Engulfing",
+                            "description": "Suggests a potential bearish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLBEARENGULFING",
+                            "interpretation": "The bearish engulfing pattern occurs when a small bullish candlestick is followed by a larger bearish candlestick, signaling a potential reversal to a downtrend.",
+                            "candles_involved": 2,
+                            "type": "int"
+                        },
+                        "three_white_soldiers": {
+                            "name": "Three White Soldiers",
+                            "description": "Suggests a potential bullish continuation",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDL3WHITESOLDIERS",
+                            "interpretation": "The three white soldiers pattern consists of three consecutive bullish candlesticks with higher closes, indicating a potential continuation of the uptrend.",
+                            "candles_involved": 3,
+                            "type": "int"
+                        },
+                        "three_black_crows": {
+                            "name": "Three Black Crows",
+                            "description": "Suggests a potential bearish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDL3BLACKCROWS",
+                            "interpretation": "The three black crows pattern consists of three consecutive bearish candlesticks with lower closes, indicating a potential reversal to a downtrend.",
+                            "candles_involved": 3,
+                            "type": "int"
+                        },
+                        "morning_doji_star": {
+                            "name": "Morning Doji Star",
+                            "description": "Suggests a potential bullish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLMORNINGDOJISTAR",
+                            "interpretation": "The morning doji star pattern consists of three candlesticks and suggests a potential trend reversal from bearish to bullish. It includes a doji candlestick in the middle.",
+                            "candles_involved": 3,
+                            "type": "int"
+                        },
+                        "evening_doji_star": {
+                            "name": "Evening Doji Star",
+                            "description": "Suggests a potential bearish reversal",
+                            "attributes": ["open", "high", "low", "close"],
+                            "function": "CDLEVENINGDOJISTAR",
+                            "interpretation": "The evening doji star pattern consists of three candlesticks and suggests a potential trend reversal from bullish to bearish. It includes a doji candlestick in the middle.",
+                            "candles_involved": 3,
+                            "type": "int"
+                        }
+                    },
+                    "fundamental": {
+                        "price_to_earnings_ratio": {
+                            "name": "Price-to-Earnings Ratio",
+                            "description": "Compares a company's stock price to its earnings per share",
+                            "formula": "close / earnings_per_share",
+                            "interpretation": "Higher P/E ratio indicates the stock may be overvalued, while a lower P/E ratio suggests undervaluation",
+                            "attributes": [
+                                "close",
+                                "earnings_per_share"
+                            ],
+                            "depends_on": ["earnings_per_share"],
+                            "type": "float"
+                        },
+                        "earnings_per_share": {
+                            "name": "Earnings per Share",
+                            "description": "The portion of a company's profit allocated to each outstanding share",
+                            "formula": "net_earnings / outstanding_shares",
+                            "interpretation": "Higher EPS indicates higher profitability per share",
+                            "attributes": [
+                                "net_earnings",
+                                "outstanding_shares"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "price_to_book_ratio": {
+                            "name": "Price-to-Book Ratio",
+                            "description": "Compares a company's stock price to its book value per share",
+                            "formula": "close / book_value_per_share",
+                            "interpretation": "Higher P/B ratio may indicate overvaluation, while a lower P/B ratio suggests undervaluation",
+                            "attributes": [
+                                "close",
+                                "book_value_per_share"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "dividend_yield": {
+                            "name": "Dividend Yield",
+                            "description": "The annual dividend income per share relative to the stock's price",
+                            "formula": "dividends_per_share / close",
+                            "interpretation": "Higher dividend yield indicates higher income from dividends",
+                            "attributes": [
+                                "dividends_per_share",
+                                "close"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "return_on_equity": {
+                            "name": "Return on Equity",
+                            "description": "Measures a company's profitability relative to its shareholders' equity",
+                            "formula": "net_income / shareholders_equity",
+                            "interpretation": "Higher ROE indicates better returns generated for shareholders",
+                            "attributes": [
+                                "net_income",
+                                "shareholders_equity"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "debt_to_equity_ratio": {
+                            "name": "Debt-to-Equity Ratio",
+                            "description": "Compares a company's total debt to its shareholders' equity",
+                            "formula": "total_debt / shareholders_equity",
+                            "interpretation": "Higher ratio indicates higher financial leverage and risk",
+                            "attributes": [
+                                "total_debt",
+                                "shareholders_equity"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "current_ratio": {
+                            "name": "Current Ratio",
+                            "description": "Measures a company's ability to cover short-term liabilities with its short-term assets",
+                            "formula": "current_assets / current_liabilities",
+                            "interpretation": "Higher ratio suggests better short-term liquidity",
+                            "attributes": [
+                                "current_assets",
+                                "current_liabilities"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "quick_ratio": {
+                            "name": "Quick Ratio",
+                            "description": "Measures a company's ability to cover short-term liabilities with its most liquid assets",
+                            "formula": "(current_assets - inventory) / current_liabilities",
+                            "interpretation": "Higher ratio indicates better ability to meet short-term obligations without relying on inventory",
+                            "attributes": [
+                                "current_assets",
+                                "inventory",
+                                "current_liabilities"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "gross_margin": {
+                            "name": "Gross Margin",
+                            "description": "Measures the profitability of a company's core operations",
+                            "formula": "(revenue - cost_of_goods_sold) / revenue",
+                            "interpretation": "Higher margin indicates more efficient operations",
+                            "attributes": [
+                                "revenue",
+                                "cost_of_goods_sold"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "operating_margin": {
+                            "name": "Operating Margin",
+                            "description": "Measures the profitability of a company's core operations, excluding interest and taxes",
+                            "formula": "operating_income / revenue",
+                            "interpretation": "Higher margin indicates better operational efficiency",
+                            "attributes": [
+                                "operating_income",
+                                "revenue"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "net_profit_margin": {
+                            "name": "Net Profit Margin",
+                            "description": "Measures the percentage of revenue that translates into net profit",
+                            "formula": "net_income / revenue",
+                            "interpretation": "Higher margin indicates better profitability",
+                            "attributes": [
+                                "net_income",
+                                "revenue"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "return_on_assets": {
+                            "name": "Return on Assets",
+                            "description": "Measures the profitability of a company's assets",
+                            "formula": "net_income / total_assets",
+                            "interpretation": "Higher ROA indicates better utilization of assets to generate profit",
+                            "attributes": [
+                                "net_income",
+                                "total_assets"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "return_on_investment": {
+                            "name": "Return on Investment",
+                            "description": "Measures the return generated by an investment in the company",
+                            "formula": "(net_income + interest_expense) / total_investment",
+                            "interpretation": "Higher ROI indicates better returns on investment",
+                            "attributes": [
+                                "net_income",
+                                "interest_expense",
+                                "total_investment"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "return_on_capital_employed": {
+                            "name": "Return on Capital Employed",
+                            "description": "Measures the return generated from the capital employed in the business",
+                            "formula": "operating_profit / (shareholders_equity + long_term_debt)",
+                            "interpretation": "Higher ROCE indicates better returns on capital employed",
+                            "attributes": [
+                                "operating_profit",
+                                "shareholders_equity",
+                                "long_term_debt"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "earnings_before_interest_and_tax_margin": {
+                            "name": "Earnings Before Interest and Tax (EBIT) Margin",
+                            "description": "Measures the profitability of a company's operations before accounting for interest and taxes",
+                            "formula": "ebit / revenue",
+                            "interpretation": "Higher margin indicates better operational profitability",
+                            "attributes": [
+                                "ebit",
+                                "revenue"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "earnings_before_interest_tax_depreciation_amortization_margin": {
+                            "name": "Earnings Before Interest, Tax, Depreciation, and Amortization (EBITDA) Margin",
+                            "description": "Measures the profitability of a company's operations before accounting for interest, taxes, depreciation, and amortization",
+                            "formula": "ebitda / revenue",
+                            "interpretation": "Higher margin indicates better operational profitability",
+                            "attributes": [
+                                "ebitda",
+                                "revenue"
+                            ],
+                            "depends_on": [],
+                            "type": "float"
+                        },
+                        "graham_formula": {
+                            "name": "Graham's Formula",
+                            "description": "Estimates the intrinsic value of a stock using earnings per share, expected growth rate, and required rate of return",
+                            "formula": "(earnings_per_share * (8.5 + (2 * expected_growth_rate))) / required_rate_of_return",
+                            "interpretation": "If calculated value > market price, the stock may be considered undervalued",
+                            "attributes": [
+                                "earnings_per_share",
+                                "expected_growth_rate",
+                                "required_rate_of_return"
+                            ],
+                            "depends_on": [
+                                "earnings_per_share",
+                                "expected_growth_rate",
+                                "required_rate_of_return"
+                            ],
+                            "type": "float"
+                        }
+                    },
+                    "attributes": {
+                        "open": {
+                            "type": "float",
+                            "description": "Open price of the stock",
+                            "source": "Stock market data provider",
+                            "update_frequency": "Real-time"
+                        },
+                        "close": {
+                            "type": "float",
+                            "description": "Closing price of the stock",
+                            "source": "Stock market data provider",
+                            "update_frequency": "Real-time"
+                        },
+                        "volume": {
+                            "type": "int",
+                            "description": "Number of shares traded during a given period",
+                            "source": "Stock market data provider",
+                            "update_frequency": "Real-time"
+                        },
+                        "high": {
+                            "type": "float",
+                            "description": "Highest price reached by the stock during a given period",
+                            "source": "Stock market data provider",
+                            "update_frequency": "Real-time"
+                        },
+                        "low": {
+                            "type": "float",
+                            "description": "Lowest price reached by the stock during a given period",
+                            "source": "Stock market data provider",
+                            "update_frequency": "Real-time"
+                        },
+                        "earnings_per_share": {
+                            "type": "float",
+                            "description": "Earnings generated by the company per outstanding share",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "book_value_per_share": {
+                            "type": "float",
+                            "description": "Value of the company's assets per outstanding share",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "dividends_per_share": {
+                            "type": "float",
+                            "description": "Dividends paid by the company per outstanding share",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "net_earnings": {
+                            "type": "float",
+                            "description": "Net earnings or profit generated by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "outstanding_shares": {
+                            "type": "int",
+                            "description": "Total number of shares issued by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "total_debt": {
+                            "type": "float",
+                            "description": "Total debt or liabilities of the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "shareholders_equity": {
+                            "type": "float",
+                            "description": "Shareholders' equity or net worth of the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "current_assets": {
+                            "type": "float",
+                            "description": "Total current assets of the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "current_liabilities": {
+                            "type": "float",
+                            "description": "Total current liabilities of the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "inventory": {
+                            "type": "float",
+                            "description": "Value of inventory or stock held by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "revenue": {
+                            "type": "float",
+                            "description": "Total revenue or sales generated by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "cost_of_goods_sold": {
+                            "type": "float",
+                            "description": "Cost incurred by the company to produce goods sold",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "operating_income": {
+                            "type": "float",
+                            "description": "Income generated by the company's core operations",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "net_income": {
+                            "type": "float",
+                            "description": "Net income or profit generated by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "interest_expense": {
+                            "type": "float",
+                            "description": "Interest expense incurred by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "total_investment": {
+                            "type": "float",
+                            "description": "Total investment or capital employed by the company",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+                        "associated_industry": {
+                            "type": "string",
+                            "description": "The industry to which the company belongs",
+                            "source": "Company information",
+                            "update_frequency": "Periodic"
+                        },
+                        "market_capitalization": {
+                            "type": "float",
+                            "description": "Total market value of a company's outstanding shares",
+                            "source": "Stock market data provider",
+                            "update_frequency": "Real-time"
+                        },
+                        "price_earnings_ratio": {
+                            "type": "float",
+                            "description": "Ratio of a company's stock price to its earnings per share",
+                            "source": "Company financial statements",
+                            "update_frequency": "Quarterly"
+                        },
+
+                    }
+                }
+
+            }
+        },
+        mounted() {
+            // Set the initial list items based on the selected option
+            this.setListItems(this.jsonDataMap[this.selectedOption]);
+            // Set the first item as the default selected item
+            this.selectedItem = Object.keys(this.listItems)[0];
+        },
+        methods: {
+            selectOption(option) {
+                this.selectedOption = option;
+
+                // Simulated JSON data for different options
+
+                // Set the list items based on the selected option
+                this.setListItems(this.jsonDataMap[this.selectedOption]);
+                this.selectedItem = Object.keys(this.listItems)[0];
+            },
+            setListItems(items) {
+                this.listItems = items;
+                this.selectedItem = Object.keys(items)[0]; // Reset the selected item
+            },
+            selectListItem(item) {
+                this.selectedItem = item;
+            }
+        }
+    });
+
+    app.mount('#app');
+</script>
+</body>
+</html>
